@@ -4,6 +4,7 @@ import com.stampanone.Portfolio.entity.Proyecto;
 import com.stampanone.Portfolio.service.SProyecto;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,18 +36,21 @@ public class CProyecto {
         return proyecServ.buscarProyecto(id);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/crear")
     public String agregarProyecto (@RequestBody Proyecto proyec){
         proyecServ.crearProyecto(proyec);
         return "El Proyecto fue creado correctamente.";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/borrar/{id}")
     public String eliminarProyecto(@PathVariable int id){
         proyecServ.borrarProyecto(id);
         return "El proyecto fue eliminado correctamente.";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/editar")
     public String editarProyecto (@RequestBody Proyecto proyec){
         proyecServ.editarProyecto(proyec);

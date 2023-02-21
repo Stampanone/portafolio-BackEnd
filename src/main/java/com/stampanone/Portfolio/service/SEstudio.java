@@ -10,29 +10,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Service
 @Transactional
 public class SEstudio {
-    
+
     @Autowired
     private REstudio estuRepo;
-    
-    public List<Estudio> verEstudio(){
-        List<Estudio> listaEstudio= estuRepo.findAll();
-        
+
+    public List<Estudio> verEstudio() {
+        List<Estudio> listaEstudio = estuRepo.findAll();
+
         return listaEstudio;
     }
-    
-    public void crearEstudio (Estudio estu){
+
+    public void crearEstudio(Estudio estu) {
         estuRepo.save(estu);
     }
-    
-    public void borrarEstudio (int id){
+
+    public void borrarEstudio(int id) {
         estuRepo.deleteById(id);
     }
-    
-    public Estudio buscarEstudio(int id){
+
+    public Estudio buscarEstudio(int id) {
         Estudio estu = estuRepo.findById(id).orElse(null);
         return estu;
     }
-        public void editarEstudio(Estudio estu){
+
+    public void editarEstudio(Estudio estu) {
         estuRepo.save(estu);
     }
 }

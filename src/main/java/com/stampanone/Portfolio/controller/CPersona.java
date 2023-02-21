@@ -4,6 +4,7 @@ import com.stampanone.Portfolio.entity.Persona;
 import com.stampanone.Portfolio.service.SPersona;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,18 +36,21 @@ public class CPersona {
         return persoServ.buscarPersona(id);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/crear")
     public String agregarPersona (@RequestBody Persona pers){
         persoServ.crearPersona(pers);
         return "La persona fue creada correctamente.";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/borrar/{id}")
     public String eliminarPersona(@PathVariable int id){
         persoServ.borrarPersona(id);
         return "La persona fue eliminada correctamente.";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/editar")
     public String editarPersona (@RequestBody Persona pers){
         persoServ.editarPersona(pers);

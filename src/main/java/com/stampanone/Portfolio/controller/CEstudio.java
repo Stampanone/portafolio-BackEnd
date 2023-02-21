@@ -4,6 +4,7 @@ import com.stampanone.Portfolio.entity.Estudio;
 import com.stampanone.Portfolio.service.SEstudio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,18 +36,21 @@ public class CEstudio {
         return estuServ.buscarEstudio(id);
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/crear")
     public String agregarEstudio (@RequestBody Estudio estu){
         estuServ.crearEstudio(estu);
         return "El estudio fue creado correctamente.";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/borrar/{id}")
     public String eliminarEstudio(@PathVariable int id){
         estuServ.borrarEstudio(id);
         return "El estudio fue eliminado correctamente.";
     }
     
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/editar")
     public String editarEstudio (@RequestBody Estudio estu){
         estuServ.editarEstudio(estu);
