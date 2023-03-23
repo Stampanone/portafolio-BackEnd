@@ -5,6 +5,7 @@ com\stampanone\Portfolio\security\dto\LoginUsuario.class
 com\stampanone\Portfolio\repositpry\REstudio.class
 com\stampanone\Portfolio\service\SPersona.class
 com\stampanone\Portfolio\security\jwt\JwtEntryPoint.class
+com\stampanone\Portfolio\webConfig.class
 com\stampanone\Portfolio\PortfolioApplication.class
 com\stampanone\Portfolio\security\repository\IRolRepository.class
 com\stampanone\Portfolio\entity\Persona.class
