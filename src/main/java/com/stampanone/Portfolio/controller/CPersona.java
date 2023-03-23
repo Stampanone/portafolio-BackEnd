@@ -32,7 +32,7 @@ public class CPersona {
     
     @GetMapping("/ver/{id}")
     @ResponseBody
-    public Persona verPersona(@PathVariable int id){
+    public Persona verPersona(@PathVariable("id") int id){
         return persoServ.buscarPersona(id);
     }
     
