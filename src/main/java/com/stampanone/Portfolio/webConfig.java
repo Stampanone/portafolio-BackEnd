@@ -12,6 +12,10 @@ public class webConfig extends WebMvcConfigurationSupport {
         registry.addMapping("/**")
                 .allowedOriginPatterns("*")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD")
-                .allowCredentials(true);
+                //.allowCredentials(true)
+                .allowedHeaders("*")
+                        .exposedHeaders("Access-Control-Allow-Origin", "Access-Control-Allow-Methods", "Access-Control-Allow-Headers", "Access-Control-Max-Age", "Access-Control-Request-Headers", "Access-Control-Request-Method")
+                        .allowCredentials(false)
+                        .maxAge(3600);
     }
 }
